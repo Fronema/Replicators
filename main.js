@@ -1,11 +1,12 @@
 var sparks = 0;
+var pieces = 0;
+var basicStructure = 0
 
-function sparkClick(number){
+function sparkClick(number)
+{
     sparks = sparks + number;
     document.getElementById("sparks").innerHTML = sparks;
 };
-
-var pieces = 0;
 
 function generatePieces()
 {
@@ -24,10 +25,27 @@ function generatePieces()
     }
 }
 
+function createBasicStructure()
+{
+    var cost = 5;
+    if (pieces >= cost)
+    {
+        basicStructure++;
+        pieces = pieces - cost;
+        document.getElementById('basicStructures').innerHTML = basicStructure; 
+        document.getElementById('pieces').innerHTML = pieces;
+        
+    }
+}
+
 
 
 window.setInterval(function(){
 	
 	generatePieces();
+    if (pieces > 5)
+    {
+        document.getElementById("basicStructure").style.visibility = "visible";
+    }
 	
 }, 1000);
