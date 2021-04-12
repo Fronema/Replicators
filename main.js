@@ -1,26 +1,33 @@
-var cookies = 0;
+var sparks = 0;
 
-function cookieClick(number){
-    cookies = cookies + number;
-    document.getElementById("cookies").innerHTML = cookies;
+function sparkClick(number){
+    sparks = sparks + number;
+    document.getElementById("sparks").innerHTML = sparks;
 };
 
-var cursors = 0;
+var pieces = 0;
 
-function buyCursor(){
-    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
-    if(cookies >= cursorCost){                                   //checks that the player can afford the cursor
-        cursors = cursors + 1;                                   //increases number of cursors
-    	cookies = cookies - cursorCost;                          //removes the cookies spent
-        document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('cookies').innerHTML = cookies;  //updates the number of cookies for the user
-    };
-    var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
-    document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
-};
+function generatePieces()
+{
+    var cost = Math.floor(Math.random() * 10);
+    if (sparks >= cost)
+    {
+        pieces++;
+        sparks = sparks - cost;
+        document.getElementById('pieces').innerHTML = pieces; 
+        document.getElementById('sparks').innerHTML = sparks;
+        document.getElementById('info').innerHTML = "One piece was generated for " + cost + " sparks";
+    }
+    else
+    {
+        document.getElementById('info').innerHTML = "";
+    }
+}
+
+
 
 window.setInterval(function(){
 	
-	cookieClick(cursors);
+	generatePieces();
 	
 }, 1000);
