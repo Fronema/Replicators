@@ -9,7 +9,7 @@ var pieces = 0;
 
 function generatePieces()
 {
-    var cost = Math.floor(Math.random() * 10);
+    var cost = Math.floor(Math.random() * 10) + 1;
     if (sparks >= cost)
     {
         pieces++;
@@ -20,7 +20,7 @@ function generatePieces()
     }
     else
     {
-        document.getElementById('info').innerHTML = "";
+        document.getElementById('info').innerHTML = " ";
     }
 }
 
